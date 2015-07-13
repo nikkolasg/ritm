@@ -15,13 +15,11 @@ module Visitor
         end
 
         def check packet
-            raise "[-] Received a wrong input to visit." if packet.is_nil? || packet.is_a?(PacketFu::InvalidPacket)
+            raise "[-] Received a wrong input to visit." if packet.valid? 
         end
 
         def base_info pkt
-            return unless pkt.is_ip?
-            packet_info = [pkt.ip_saddr,pkt.ip_daddr,pkt.size,pkt.proto.last]
-            return "%s -> %s (%s bytes) %s" % packet_info
+            return pkt.peek_format
         end
 
     end

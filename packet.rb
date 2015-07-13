@@ -1,5 +1,5 @@
 require 'packetfu'
-require 'visitors'
+require_relative 'visitors'
 
 ## A module responsible to add a few utils function
 ## to the packetfu packet class...
@@ -26,6 +26,10 @@ module PacketDecorator
 
     def finished
         @finished = true
+    end
+
+    def valid?
+        proto.include? "Invalid"
     end
 end
 

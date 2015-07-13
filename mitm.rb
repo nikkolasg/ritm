@@ -2,7 +2,7 @@ require 'packetfu'
 require_relative 'packet'
 require_relative 'visitors'
 require_relative 'visitors/basic'
-include PacketFu
+
 
 $opts = { iface: PacketFu::Utils.whoami?[:iface] }
 
@@ -12,10 +12,10 @@ end
 
 
 def sniff iface
-    capture = Capture.new(iface: iface, start: true)
+    capture = PacketFu::Capture.new(iface: iface, start: true)
     visitor = Visitor::PacketVisitor::Basic.new
     capture.stream.each do |p|
-        pkt = Packet.parse p
+        pkt = PacketFu::Packet.parse p
         pkt.accept visitor
     end
 end
