@@ -7,7 +7,13 @@ module Visitor
             include PacketVisitor
 
             def new_packet packet
-                puts "[+] DNS visitor : #{packet.payload}"
+                op = packet.payload[2].unpack("B*")[0][0..4] 
+                if op == "00000" 
+                    query = "query"
+                elsif op == "10000"
+                    query = "response"
+                end
+                puts "[+] DNS visitor : (#{op})" + query 
                 return true
             end
         end
