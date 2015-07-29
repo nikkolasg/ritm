@@ -44,6 +44,12 @@ sslstrip            dnsspoof            dispatcher           listener (pcap)
 
 Every plugin should be "launchable" with parameters so others plugin can use them 
 
+Assignement
+===========
+
+Would like to provide an 'api' like or 'daemon' to add / remove client 
+Idea is to launch the tool for a client, make mitm. Network will be slowed down for him, so the less time the better. After exploitation, we can tell the tool to stop mitm for this ip.
+
 
 Technicalities:
  MRI / Rubinius / JRuby?
